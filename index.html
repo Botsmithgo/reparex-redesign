@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="Gradually restore your hair's natural color from within — no dye, no roots, no commitment." />
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&h=630&q=80&auto=format&fit=crop" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F4A3C'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-weight='700' font-size='20' fill='%23F7F3EA' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#2F4A3C" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -82,6 +83,7 @@
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="antialiased">
+<a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:z-[60] focus:top-3 focus:left-3 focus:bg-pine focus:text-cream focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
 
 <!-- ░░ TRUST BAR ░░ -->
 <div class="bg-pine text-cream text-[13px]">
@@ -316,12 +318,12 @@
       <div class="ba-wrap aspect-[4/3] shadow-soft-lg bg-pine/5" id="ba">
         <div class="ba-before absolute inset-0">
           <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1000&q=80&auto=format&fit=crop"
-               alt="After — natural color restored" class="w-full h-full object-cover"
+               alt="After — natural color restored" class="w-full h-full object-cover" loading="lazy" decoding="async"
                onerror="document.getElementById('ba').classList.add('ba-fail')" />
         </div>
         <div class="ba-after" id="baAfter">
           <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1000&q=80&auto=format&fit=crop"
-               alt="Before — graying hair" class="w-full h-full object-cover" style="filter:grayscale(1) brightness(1.05)" />
+               alt="Before — graying hair" class="w-full h-full object-cover" loading="lazy" decoding="async" style="filter:grayscale(1) brightness(1.05)" />
           <span class="absolute top-3 left-3 bg-pine/80 text-cream text-xs font-semibold px-2.5 py-1 rounded-full">Before</span>
         </div>
         <span class="absolute top-3 right-3 bg-terracotta text-white text-xs font-semibold px-2.5 py-1 rounded-full z-10">After</span>
@@ -586,6 +588,15 @@
 
 </main>
 
+<!-- ░░ STICKY MOBILE SHOP BAR ░░ -->
+<div id="mobileBar" class="md:hidden fixed bottom-0 inset-x-0 z-40 translate-y-full transition-transform duration-300 bg-cream/95 backdrop-blur border-t border-line px-4 py-3 flex items-center justify-between gap-3 shadow-[0_-6px_24px_rgba(47,74,60,.12)]">
+  <div>
+    <p class="text-[11px] uppercase tracking-wider text-ink-muted">Reparex · For Grey Hair</p>
+    <p class="font-serif text-lg font-semibold text-pine leading-none">From $54.95</p>
+  </div>
+  <a href="#shop" class="bg-terracotta hover:bg-terracotta-bright text-white font-semibold px-7 py-3 rounded-xl shadow-soft transition-colors cursor-pointer">Shop</a>
+</div>
+
 <!-- ░░ FOOTER ░░ -->
 <footer class="bg-pine-deep text-cream/80">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
@@ -684,9 +695,23 @@
         if (label) { const t = label.textContent; label.textContent = 'Added ✓'; setTimeout(() => (label.textContent = t), 1200); }
       });
     });
+
+    // Sticky mobile shop bar — slides up once you're past the hero
+    const mobileBar = $('mobileBar');
+    if (mobileBar) {
+      const toggleBar = () => mobileBar.classList.toggle('translate-y-full', scrollY < 560);
+      addEventListener('scroll', toggleBar, { passive: true });
+      toggleBar();
+    }
   })();
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
-<script>window.lucide && lucide.createIcons();</script>
+<script>
+  if (window.lucide) {
+    lucide.createIcons();
+    // Decorative icons shouldn't be announced by screen readers
+    document.querySelectorAll('svg.lucide').forEach((s) => { s.setAttribute('aria-hidden', 'true'); s.setAttribute('focusable', 'false'); });
+  }
+</script>
 </body>
 </html>
