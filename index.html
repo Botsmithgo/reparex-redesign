@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Reparex — Your Gray, Gone. Naturally. | For Grey Hair since 1991</title>
 <meta name="description" content="Reparex gradually restores your hair's natural color from within — no dye, no obvious roots, no commitment. Visible difference in ~5 days. Trusted since 1991." />
+<!-- Social share preview (so the link looks good when shared) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Reparex — Your Gray, Gone. Naturally." />
+<meta property="og:description" content="Gradually restore your hair's natural color from within — no dye, no roots, no commitment. Trusted since 1991." />
+<meta property="og:image" content="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&h=630&q=80&auto=format&fit=crop" />
+<meta property="og:url" content="https://botsmithgo.github.io/reparex-redesign/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Reparex — Your Gray, Gone. Naturally." />
+<meta name="twitter:description" content="Gradually restore your hair's natural color from within — no dye, no roots, no commitment." />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1200&h=630&q=80&auto=format&fit=crop" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232F4A3C'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-weight='700' font-size='20' fill='%23F7F3EA' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -50,6 +61,8 @@
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease-out, transform .7s ease-out; }
   .reveal.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} .scroll-smooth{scroll-behavior:auto} }
+  /* If JS is disabled, never hide content */
+
   /* Before/After slider */
   .ba-wrap{ position:relative; overflow:hidden; border-radius:16px; }
   .ba-after{ position:absolute; inset:0; width:50%; overflow:hidden; border-right:3px solid #FCFAF5; }
@@ -66,6 +79,7 @@
   a,button{ -webkit-tap-highlight-color:transparent; }
   :focus-visible{ outline:3px solid #A8502B; outline-offset:2px; border-radius:6px; }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="antialiased">
 
@@ -98,9 +112,23 @@
       </a>
       <button aria-label="Cart" class="relative p-2 text-pine hover:text-terracotta transition-colors cursor-pointer">
         <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-        <span class="absolute -top-0.5 -right-0.5 bg-terracotta text-white text-[10px] font-bold w-4 h-4 rounded-full grid place-items-center">0</span>
+        <span data-cart-count class="absolute -top-0.5 -right-0.5 bg-terracotta text-white text-[10px] font-bold w-4 h-4 rounded-full grid place-items-center">0</span>
+      </button>
+      <button id="menuBtn" aria-label="Menu" aria-expanded="false" class="md:hidden p-2 text-pine hover:text-terracotta transition-colors cursor-pointer">
+        <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-cream/95 backdrop-blur px-4 sm:px-6 py-3">
+    <nav class="flex flex-col text-[15px]">
+      <a href="#how" class="py-2.5 font-medium text-ink-muted hover:text-pine transition-colors">How it works</a>
+      <a href="#shop" class="py-2.5 font-medium text-ink-muted hover:text-pine transition-colors">Shop</a>
+      <a href="#proof" class="py-2.5 font-medium text-ink-muted hover:text-pine transition-colors">Results</a>
+      <a href="#compare" class="py-2.5 font-medium text-ink-muted hover:text-pine transition-colors">Why Reparex</a>
+      <a href="#faq" class="py-2.5 font-medium text-ink-muted hover:text-pine transition-colors">FAQ</a>
+      <a href="#shop" class="mt-2 inline-flex items-center justify-center gap-2 bg-terracotta text-white font-semibold px-4 py-3 rounded-xl cursor-pointer">Shop now</a>
+    </nav>
   </div>
 </header>
 
@@ -394,7 +422,7 @@
         <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Women</h3>
         <p class="text-sm text-ink-muted mt-1">Restore your natural color, gently.</p>
         <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
-        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+        <button data-add class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> <span data-add-label>Add to cart</span></button>
       </div>
     </article>
 
@@ -415,7 +443,7 @@
         <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Men</h3>
         <p class="text-sm text-ink-muted mt-1">Look as sharp as you feel.</p>
         <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
-        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+        <button data-add class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> <span data-add-label>Add to cart</span></button>
       </div>
     </article>
 
@@ -435,7 +463,7 @@
         <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Beard</h3>
         <p class="text-sm text-ink-muted mt-1">For beard & moustache.</p>
         <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
-        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+        <button data-add class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> <span data-add-label>Add to cart</span></button>
       </div>
     </article>
   </div>
@@ -606,35 +634,59 @@
   </div>
 </footer>
 
-<script src="https://unpkg.com/lucide@latest"></script>
 <script>
-  lucide.createIcons();
+  // App logic runs immediately and independent of any CDN, so content is never stuck hidden.
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const reveal = (el) => el.classList.add('in');
 
-  // Header shadow on scroll
-  const hdr = document.getElementById('hdr');
-  addEventListener('scroll', () => {
-    hdr.classList.toggle('shadow-soft', scrollY > 8);
-  });
+    // Reveal on scroll (progressive enhancement) + failsafe
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      setTimeout(() => document.querySelectorAll('.reveal:not(.in)').forEach(reveal), 900);
+    } else {
+      document.querySelectorAll('.reveal').forEach(reveal);
+    }
 
-  // Reveal on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Header shadow on scroll
+    const hdr = $('hdr');
+    if (hdr) addEventListener('scroll', () => hdr.classList.toggle('shadow-soft', scrollY > 8));
 
-  // Before/After slider
-  const range = document.getElementById('baRange');
-  const after = document.getElementById('baAfter');
-  const handle = document.getElementById('baHandle');
-  if (range) {
-    const sync = () => {
-      const v = range.value;
-      after.style.width = v + '%';
-      handle.style.left = v + '%';
-    };
-    range.addEventListener('input', sync);
-    sync();
-  }
+    // Mobile menu toggle
+    const menuBtn = $('menuBtn'), mobileMenu = $('mobileMenu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const open = !mobileMenu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(open));
+      });
+      mobileMenu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    // Before/After slider
+    const range = $('baRange'), after = $('baAfter'), handle = $('baHandle');
+    if (range) {
+      const sync = () => { after.style.width = range.value + '%'; handle.style.left = range.value + '%'; };
+      range.addEventListener('input', sync); sync();
+    }
+
+    // Live cart counter — a dead "Add to cart" reads as broken in a demo
+    let count = 0;
+    document.querySelectorAll('[data-add]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        count++;
+        document.querySelectorAll('[data-cart-count]').forEach((b) => (b.textContent = count));
+        const label = btn.querySelector('[data-add-label]');
+        if (label) { const t = label.textContent; label.textContent = 'Added ✓'; setTimeout(() => (label.textContent = t), 1200); }
+      });
+    });
+  })();
 </script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>window.lucide && lucide.createIcons();</script>
 </body>
 </html>
