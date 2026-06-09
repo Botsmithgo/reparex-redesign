@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reparex — Your Gray, Gone. Naturally. | For Grey Hair since 1991</title>
+<meta name="description" content="Reparex gradually restores your hair's natural color from within — no dye, no obvious roots, no commitment. Visible difference in ~5 days. Trusted since 1991." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: '#F7F3EA',
+          'cream-card': '#FCFAF5',
+          pine: '#2F4A3C',
+          'pine-deep': '#243A2F',
+          sage: '#7C8B6B',
+          terracotta: '#A8502B',
+          'terracotta-bright': '#C2683D',
+          gold: '#B0863E',
+          ink: '#1F2A24',
+          'ink-muted': '#4A5249',
+          line: '#E4DCC9',
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        boxShadow: {
+          soft: '0 2px 4px rgba(47,74,60,.06), 0 10px 30px rgba(47,74,60,.08)',
+          'soft-lg': '0 4px 8px rgba(47,74,60,.07), 0 24px 60px rgba(47,74,60,.12)',
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { background: #F7F3EA; color: #1F2A24; font-family: 'Inter', sans-serif; }
+  h1,h2,h3,.serif { font-family: 'Fraunces', serif; font-optical-sizing: auto; letter-spacing: -0.01em; }
+  /* Subtle organic grain overlay */
+  .grain::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.05; z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Reveal on scroll */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease-out, transform .7s ease-out; }
+  .reveal.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} .scroll-smooth{scroll-behavior:auto} }
+  /* Before/After slider */
+  .ba-wrap{ position:relative; overflow:hidden; border-radius:16px; }
+  .ba-after{ position:absolute; inset:0; width:50%; overflow:hidden; border-right:3px solid #FCFAF5; }
+  .ba-after img,.ba-before img{ height:100%; width:auto; max-width:none; }
+  .ba-range{ position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
+  .ba-handle{ position:absolute; top:0; bottom:0; width:3px; background:#FCFAF5; left:50%; transform:translateX(-50%); pointer-events:none; box-shadow:0 0 0 1px rgba(0,0,0,.08); }
+  .ba-handle::after{ content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:42px; height:42px; border-radius:999px; background:#FCFAF5; box-shadow:0 4px 14px rgba(0,0,0,.18); }
+  .ba-handle .arrows{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; color:#2F4A3C; }
+  /* Comparison table: drop the least-important column on small screens so 3 cols fit cleanly */
+  @media (max-width:639px){ .cmp th:last-child, .cmp td:last-child{ display:none; } }
+  details[open] .faq-plus{ transform:rotate(45deg); }
+  .faq-plus{ transition:transform .2s ease; }
+  ::selection{ background:#C2683D; color:#fff; }
+  a,button{ -webkit-tap-highlight-color:transparent; }
+  :focus-visible{ outline:3px solid #A8502B; outline-offset:2px; border-radius:6px; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ░░ TRUST BAR ░░ -->
+<div class="bg-pine text-cream text-[13px]">
+  <div class="max-w-7xl mx-auto px-4 h-9 flex items-center justify-center gap-6 tracking-wide">
+    <span class="flex items-center gap-1.5"><i data-lucide="truck" class="w-3.5 h-3.5"></i> Free U.S. shipping</span>
+    <span class="hidden sm:flex items-center gap-1.5"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> 60-day money-back</span>
+    <span class="flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Trusted since 1991</span>
+  </div>
+</div>
+
+<!-- ░░ HEADER ░░ -->
+<header id="hdr" class="sticky top-0 z-50 transition-all duration-300 bg-cream/90 backdrop-blur border-b border-line/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="flex items-baseline gap-2">
+      <span class="font-serif text-2xl font-bold text-pine tracking-tight">Reparex</span>
+      <span class="hidden sm:inline text-[11px] uppercase tracking-[0.2em] text-sage font-semibold">For Grey Hair</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-[15px] font-medium text-ink-muted">
+      <a href="#how" class="hover:text-pine transition-colors">How it works</a>
+      <a href="#shop" class="hover:text-pine transition-colors">Shop</a>
+      <a href="#proof" class="hover:text-pine transition-colors">Results</a>
+      <a href="#compare" class="hover:text-pine transition-colors">Why Reparex</a>
+      <a href="#faq" class="hover:text-pine transition-colors">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#shop" class="hidden sm:inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-bright text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-soft transition-colors cursor-pointer">
+        Shop now
+      </a>
+      <button aria-label="Cart" class="relative p-2 text-pine hover:text-terracotta transition-colors cursor-pointer">
+        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+        <span class="absolute -top-0.5 -right-0.5 bg-terracotta text-white text-[10px] font-bold w-4 h-4 rounded-full grid place-items-center">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ░░ HERO ░░ -->
+<section class="relative grain overflow-hidden bg-[#16241C] text-cream">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#1B2E23] via-[#16241C] to-[#101A14]"></div>
+  <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[radial-gradient(circle_at_center,rgba(168,80,43,0.18),transparent_60%)]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-14 pb-20 lg:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <!-- Copy -->
+    <div class="reveal">
+      <span class="inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-gold border border-gold/30 px-3 py-1.5 rounded-full">
+        <i data-lucide="leaf" class="w-3.5 h-3.5"></i> No dye · No commitment · Since 1991
+      </span>
+      <h1 class="mt-6 font-serif font-semibold text-cream leading-[1.02] text-5xl sm:text-6xl lg:text-[4.25rem]">
+        Your gray,<br>gone. <span class="text-terracotta-bright">Naturally.</span>
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-cream/70 max-w-xl leading-relaxed">
+        Reparex gradually restores your hair's true color from within — no dye, no obvious roots, no one the wiser. A visible difference in about <strong class="text-cream font-semibold">5 days</strong>.
+      </p>
+
+      <!-- 3-path selector -->
+      <div class="mt-8">
+        <p class="text-sm font-semibold text-cream/55 mb-2.5 uppercase tracking-wider">I'm shopping for</p>
+        <div class="inline-flex flex-wrap gap-2.5">
+          <a href="#shop" class="path-chip group flex items-center gap-2 bg-cream/[0.07] border border-cream/15 hover:border-terracotta-bright hover:bg-cream/10 px-5 py-3 rounded-xl font-semibold text-cream transition-all cursor-pointer">
+            <i data-lucide="user" class="w-4 h-4 text-gold group-hover:text-terracotta-bright transition-colors"></i> Women
+          </a>
+          <a href="#shop" class="path-chip group flex items-center gap-2 bg-cream/[0.07] border border-cream/15 hover:border-terracotta-bright hover:bg-cream/10 px-5 py-3 rounded-xl font-semibold text-cream transition-all cursor-pointer">
+            <i data-lucide="user" class="w-4 h-4 text-gold group-hover:text-terracotta-bright transition-colors"></i> Men
+          </a>
+          <a href="#shop" class="path-chip group flex items-center gap-2 bg-cream/[0.07] border border-cream/15 hover:border-terracotta-bright hover:bg-cream/10 px-5 py-3 rounded-xl font-semibold text-cream transition-all cursor-pointer">
+            <i data-lucide="scissors" class="w-4 h-4 text-gold group-hover:text-terracotta-bright transition-colors"></i> Beard
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#shop" class="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-bright text-white text-base font-semibold px-7 py-4 rounded-xl shadow-soft-lg transition-colors cursor-pointer">
+          Find your Reparex <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#how" class="inline-flex items-center gap-2 text-cream font-semibold border border-cream/25 hover:border-cream/60 px-6 py-4 rounded-xl transition-colors cursor-pointer">
+          <i data-lucide="play-circle" class="w-5 h-5"></i> How it works
+        </a>
+      </div>
+
+      <!-- proof row -->
+      <div class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+        <div class="flex items-center gap-2">
+          <div class="flex text-gold"><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i></div>
+          <span class="text-cream/80"><strong class="text-cream">4.8</strong>/5</span>
+        </div>
+        <span class="text-cream/25">|</span>
+        <span class="text-cream/80 flex items-center gap-1.5"><i data-lucide="badge-check" class="w-4 h-4 text-gold"></i> 30+ years trusted</span>
+        <span class="text-cream/25">|</span>
+        <span class="text-cream/80 flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-gold"></i> 60-day money-back</span>
+      </div>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="reveal relative">
+      <div id="heroImg" class="relative rounded-2xl overflow-hidden shadow-soft-lg bg-[#0F1812] aspect-[4/5] ring-1 ring-cream/10">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80&auto=format&fit=crop"
+             alt="A confident, distinguished man in his fifties with healthy, natural-colored hair"
+             class="w-full h-full object-cover object-top" loading="eager"
+             onerror="document.getElementById('heroImg').classList.add('img-fail')" />
+        <div class="hero-fallback hidden absolute inset-0 bg-gradient-to-br from-pine via-[#1B2E23] to-[#101A14] place-items-center text-center p-8">
+          <span class="text-cream/60 font-medium">Hero portrait — distinguished midlife<br>man, natural-colored hair</span>
+        </div>
+        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0F1812]/70 to-transparent"></div>
+      </div>
+      <!-- floating proof card -->
+      <div class="absolute -bottom-5 -left-3 sm:-left-6 bg-cream rounded-xl shadow-soft-lg p-4 max-w-[14rem]">
+        <div class="flex items-center gap-2 text-gold mb-1">
+          <i data-lucide="badge-check" class="w-4 h-4"></i><span class="text-xs font-semibold text-ink uppercase tracking-wide">By BOOS LABS</span>
+        </div>
+        <p class="text-sm text-ink-muted leading-snug">The formula men &amp; women have trusted since 1991.</p>
+      </div>
+      <!-- floating natural badge -->
+      <div class="absolute -top-3 -right-2 sm:-right-5 bg-terracotta text-white rounded-xl shadow-soft-lg p-4 text-center">
+        <p class="font-serif text-2xl font-semibold leading-none">~5 days</p>
+        <p class="text-[11px] uppercase tracking-wider text-white/85 mt-1">to visible change</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CREDIBILITY STATS BAND ░░ -->
+<section class="border-b border-line bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-line">
+    <div class="text-center px-4 py-3">
+      <p class="font-serif text-3xl sm:text-4xl font-semibold text-pine">1991</p>
+      <p class="text-sm text-ink-muted mt-1">Trusted since</p>
+    </div>
+    <div class="text-center px-4 py-3">
+      <p class="font-serif text-3xl sm:text-4xl font-semibold text-pine">~5 days</p>
+      <p class="text-sm text-ink-muted mt-1">To a visible difference</p>
+    </div>
+    <div class="text-center px-4 py-3">
+      <p class="font-serif text-3xl sm:text-4xl font-semibold text-pine">0</p>
+      <p class="text-sm text-ink-muted mt-1">Harsh chemicals or dyes</p>
+    </div>
+    <div class="text-center px-4 py-3">
+      <p class="font-serif text-3xl sm:text-4xl font-semibold text-pine">60-day</p>
+      <p class="text-sm text-ink-muted mt-1">Money-back guarantee</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PROBLEM → PROMISE ░░ -->
+<section class="max-w-4xl mx-auto px-4 sm:px-6 py-20 lg:py-28 text-center reveal">
+  <span class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">The third way</span>
+  <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold text-pine leading-tight">
+    Box dye is a commitment. The salon is a treadmill.<br class="hidden sm:block"> Going gray isn't for everyone — yet.
+  </h2>
+  <p class="mt-6 text-lg text-ink-muted leading-relaxed max-w-2xl mx-auto">
+    Reparex isn't a dye. It works <em>with</em> your hair to coax back the color you were born with — gradually, gently, on your terms. If you're just not ready to be gray, you don't have to be.
+  </p>
+</section>
+
+<!-- ░░ HOW IT WORKS ░░ -->
+<section id="how" class="relative grain bg-pine text-cream overflow-hidden">
+  <div class="absolute -top-20 right-10 w-96 h-96 rounded-full bg-sage/20 blur-3xl"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+    <div class="text-center reveal">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">How it works</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold leading-tight">Three steps. No mirror full of gray.</h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-8 backdrop-blur">
+        <div class="w-12 h-12 rounded-2xl bg-terracotta grid place-items-center mb-5"><i data-lucide="hand" class="w-6 h-6 text-white"></i></div>
+        <p class="font-serif text-gold text-sm font-semibold mb-1">Step 01</p>
+        <h3 class="font-serif text-2xl font-semibold mb-2">Apply the lotion</h3>
+        <p class="text-cream/75 leading-relaxed">A few minutes, a few times a week. Massage it into towel-dried hair — no gloves, no mess, no chemical smell.</p>
+      </div>
+      <div class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-8 backdrop-blur">
+        <div class="w-12 h-12 rounded-2xl bg-terracotta grid place-items-center mb-5"><i data-lucide="atom" class="w-6 h-6 text-white"></i></div>
+        <p class="font-serif text-gold text-sm font-semibold mb-1">Step 02</p>
+        <h3 class="font-serif text-2xl font-semibold mb-2">It works from within</h3>
+        <p class="text-cream/75 leading-relaxed">Instead of coating your hair in pigment, Reparex helps your strands restore their own natural color — so it never looks "dyed."</p>
+      </div>
+      <div class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-8 backdrop-blur">
+        <div class="w-12 h-12 rounded-2xl bg-terracotta grid place-items-center mb-5"><i data-lucide="sparkles" class="w-6 h-6 text-white"></i></div>
+        <p class="font-serif text-gold text-sm font-semibold mb-1">Step 03</p>
+        <h3 class="font-serif text-2xl font-semibold mb-2">Your color comes back</h3>
+        <p class="text-cream/75 leading-relaxed">A noticeable difference in about 5 days. Your natural shade, fully restored in 1–2 weeks. Keep using it — keep your color.</p>
+      </div>
+    </div>
+
+    <!-- timeline -->
+    <div class="reveal mt-12 bg-cream/5 border border-cream/10 rounded-2xl p-6 sm:p-8">
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 sm:gap-3">
+        <div class="flex-1 text-center"><p class="font-serif text-3xl font-bold text-gold">Day 1</p><p class="text-sm text-cream/70 mt-1">First application</p></div>
+        <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-cream/10 via-cream/30 to-cream/10"></div>
+        <div class="flex-1 text-center"><p class="font-serif text-3xl font-bold text-gold">~Day 5</p><p class="text-sm text-cream/70 mt-1">Visible difference</p></div>
+        <div class="hidden sm:block flex-1 h-px bg-gradient-to-r from-cream/10 via-cream/30 to-cream/10"></div>
+        <div class="flex-1 text-center"><p class="font-serif text-3xl font-bold text-gold">Day 7–14</p><p class="text-sm text-cream/70 mt-1">Natural color restored</p></div>
+      </div>
+      <p class="text-center text-xs text-cream/50 mt-5">Individual results may vary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ BEFORE / AFTER ░░ -->
+<section id="proof" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">See it for yourself</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold text-pine leading-tight">The gradual change<br>no one will notice.</h2>
+      <p class="mt-6 text-lg text-ink-muted leading-relaxed">
+        That's the whole point. No dramatic "before and after" reveal at the dinner table — just you, looking a little more like yourself each week. Drag the slider to see the difference.
+      </p>
+      <ul class="mt-7 space-y-3">
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-sage mt-0.5"></i><span class="text-ink-muted">Works on any hair type, color, and length</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-sage mt-0.5"></i><span class="text-ink-muted">Blends grays — never a flat, obvious block of color</span></li>
+        <li class="flex items-start gap-3"><i data-lucide="check" class="w-5 h-5 text-sage mt-0.5"></i><span class="text-ink-muted">Leaves hair softer and healthier, not stripped</span></li>
+      </ul>
+    </div>
+
+    <!-- slider (grayscale -> color of same portrait = honest representative demo) -->
+    <div class="reveal">
+      <div class="ba-wrap aspect-[4/3] shadow-soft-lg bg-pine/5" id="ba">
+        <div class="ba-before absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1000&q=80&auto=format&fit=crop"
+               alt="After — natural color restored" class="w-full h-full object-cover"
+               onerror="document.getElementById('ba').classList.add('ba-fail')" />
+        </div>
+        <div class="ba-after" id="baAfter">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=1000&q=80&auto=format&fit=crop"
+               alt="Before — graying hair" class="w-full h-full object-cover" style="filter:grayscale(1) brightness(1.05)" />
+          <span class="absolute top-3 left-3 bg-pine/80 text-cream text-xs font-semibold px-2.5 py-1 rounded-full">Before</span>
+        </div>
+        <span class="absolute top-3 right-3 bg-terracotta text-white text-xs font-semibold px-2.5 py-1 rounded-full z-10">After</span>
+        <div class="ba-handle" id="baHandle"><span class="arrows"><i data-lucide="chevrons-left-right" class="w-5 h-5"></i></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" id="baRange" aria-label="Reveal before and after" />
+        <!-- fallback -->
+        <div class="ba-fallback hidden absolute inset-0 bg-gradient-to-r from-pine/30 to-terracotta/20 place-items-center text-center p-6">
+          <span class="text-pine font-medium">Before / After slider — representative<br>customer results to be added</span>
+        </div>
+      </div>
+      <p class="text-xs text-ink-muted/70 mt-3 text-center">Representative demonstration. Real customer before/afters to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ COMPARISON ░░ -->
+<section id="compare" class="bg-cream-card/70 border-y border-line">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+    <div class="text-center reveal">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Why Reparex</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold text-pine">A smarter way to handle gray</h2>
+    </div>
+    <div class="reveal mt-12 overflow-hidden rounded-2xl border border-line shadow-soft bg-cream-card">
+      <table class="cmp w-full text-left">
+        <thead>
+          <tr class="text-sm">
+            <th class="p-4 sm:p-5 font-medium text-ink-muted"></th>
+            <th class="p-4 sm:p-5 text-center bg-pine text-cream font-serif text-lg rounded-t-xl">Reparex</th>
+            <th class="p-4 sm:p-5 text-center font-medium text-ink-muted">Box / Salon Dye</th>
+            <th class="p-4 sm:p-5 text-center font-medium text-ink-muted">Pricier rivals</th>
+          </tr>
+        </thead>
+        <tbody class="text-[15px]">
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">Looks natural, never "dyed"</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+          </tr>
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">No obvious regrowth roots</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+          </tr>
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">No harsh chemicals / no damage</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+          </tr>
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">Won't stain skin & pillowcases</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+          </tr>
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">Price</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5 font-semibold text-pine">$54.95</td>
+            <td class="p-4 sm:p-5 text-center text-ink-muted">$15–150+/mo</td>
+            <td class="p-4 sm:p-5 text-center text-ink-muted">up to $98</td>
+          </tr>
+          <tr class="border-t border-line">
+            <td class="p-4 sm:p-5 font-medium text-ink">60-day money-back · since 1991</td>
+            <td class="p-4 sm:p-5 text-center bg-pine/5 rounded-b-xl"><i data-lucide="check" class="w-5 h-5 text-sage inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="x" class="w-5 h-5 text-terracotta/50 inline"></i></td>
+            <td class="p-4 sm:p-5 text-center"><i data-lucide="minus" class="w-5 h-5 text-ink-muted/40 inline"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SHOP ░░ -->
+<section id="shop" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+  <div class="text-center reveal">
+    <span class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Choose yours</span>
+    <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold text-pine">Made for your hair, specifically</h2>
+    <p class="mt-4 text-lg text-ink-muted max-w-xl mx-auto">Same trusted formula, tuned for three jobs. Pick your match.</p>
+  </div>
+
+  <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+    <!-- WOMEN -->
+    <article class="reveal group bg-cream-card rounded-2xl border border-line shadow-soft hover:shadow-soft-lg transition-all overflow-hidden">
+      <div class="relative aspect-square bg-gradient-to-br from-[#E9D6CF] to-[#D9BFB4] grid place-items-center overflow-hidden">
+        <div class="text-center px-6 select-none">
+          <p class="text-[10px] tracking-[0.3em] text-pine/60 font-semibold">BOOS LABS</p>
+          <p class="font-serif text-4xl font-bold text-pine leading-none mt-2">FOR<br>GREY<br>HAIR</p>
+          <p class="mt-3 inline-block bg-pine text-cream text-xs font-semibold tracking-widest px-3 py-1 rounded">WOMEN</p>
+          <p class="mt-3 text-[11px] text-pine/60 italic">hair lotion</p>
+        </div>
+        <span class="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-2.5 py-1 rounded-full">Save 31%</span>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-1.5 text-gold mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><span class="text-xs text-ink-muted ml-1">4.8</span></div>
+        <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Women</h3>
+        <p class="text-sm text-ink-muted mt-1">Restore your natural color, gently.</p>
+        <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
+        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+      </div>
+    </article>
+
+    <!-- MEN (featured) -->
+    <article class="reveal group bg-cream-card rounded-2xl border-2 border-pine shadow-soft-lg transition-all overflow-hidden relative">
+      <span class="absolute top-0 left-1/2 -translate-x-1/2 bg-pine text-cream text-[11px] font-semibold tracking-wider px-4 py-1 rounded-b-xl z-10">MOST POPULAR</span>
+      <div class="relative aspect-square bg-gradient-to-br from-[#C9D2D8] to-[#9FACB5] grid place-items-center overflow-hidden">
+        <div class="text-center px-6 select-none">
+          <p class="text-[10px] tracking-[0.3em] text-pine/60 font-semibold">BOOS LABS</p>
+          <p class="font-serif text-4xl font-bold text-pine-deep leading-none mt-2">FOR<br>GREY<br>HAIR</p>
+          <p class="mt-3 inline-block bg-pine text-cream text-xs font-semibold tracking-widest px-3 py-1 rounded">MEN</p>
+          <p class="mt-3 text-[11px] text-pine/60 italic">hair lotion</p>
+        </div>
+        <span class="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-2.5 py-1 rounded-full">Save 31%</span>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-1.5 text-gold mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><span class="text-xs text-ink-muted ml-1">4.9</span></div>
+        <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Men</h3>
+        <p class="text-sm text-ink-muted mt-1">Look as sharp as you feel.</p>
+        <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
+        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+      </div>
+    </article>
+
+    <!-- BEARD -->
+    <article class="reveal group bg-cream-card rounded-2xl border border-line shadow-soft hover:shadow-soft-lg transition-all overflow-hidden">
+      <div class="relative aspect-square bg-gradient-to-br from-[#D8CDB6] to-[#B7A77F] grid place-items-center overflow-hidden">
+        <div class="text-center px-6 select-none">
+          <p class="text-[10px] tracking-[0.3em] text-pine/60 font-semibold">BOOS LABS</p>
+          <p class="font-serif text-4xl font-bold text-pine-deep leading-none mt-2">FOR<br>GREY<br>HAIR</p>
+          <p class="mt-3 inline-block bg-pine text-cream text-xs font-semibold tracking-widest px-3 py-1 rounded">BEARD</p>
+          <p class="mt-3 text-[11px] text-pine/60 italic">hair lotion</p>
+        </div>
+        <span class="absolute top-4 left-4 bg-terracotta text-white text-xs font-bold px-2.5 py-1 rounded-full">Save 31%</span>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-1.5 text-gold mb-2"><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-gold"></i><i data-lucide="star-half" class="w-3.5 h-3.5 fill-gold"></i><span class="text-xs text-ink-muted ml-1">4.7</span></div>
+        <h3 class="font-serif text-xl font-semibold text-pine">For Grey Hair — Beard</h3>
+        <p class="text-sm text-ink-muted mt-1">For beard & moustache.</p>
+        <div class="mt-4 flex items-center gap-2"><span class="font-serif text-2xl font-bold text-pine">$54.95</span><span class="text-ink-muted/60 line-through text-sm">$79.95</span></div>
+        <button class="mt-4 w-full bg-terracotta hover:bg-terracotta-bright text-white font-semibold py-3 rounded-xl shadow-soft transition-colors cursor-pointer flex items-center justify-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Add to cart</button>
+      </div>
+    </article>
+  </div>
+
+  <!-- payment row -->
+  <div class="reveal mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-ink-muted/70">
+    <span class="text-sm font-medium">Checkout securely with</span>
+    <span class="font-semibold text-pine">PayPal</span><span class="text-line">·</span>
+    <span class="font-semibold text-pine">Visa</span><span class="text-line">·</span>
+    <span class="font-semibold text-pine">Mastercard</span><span class="text-line">·</span>
+    <span class="font-semibold text-pine">Amex</span><span class="text-line">·</span>
+    <span class="font-semibold text-pine">Google Pay</span><span class="text-line">·</span>
+    <span class="font-semibold text-pine">Amazon Pay</span>
+  </div>
+</section>
+
+<!-- ░░ TESTIMONIALS ░░ -->
+<section class="bg-pine text-cream grain relative overflow-hidden">
+  <div class="absolute -bottom-24 -right-16 w-96 h-96 rounded-full bg-terracotta/20 blur-3xl"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+    <div class="text-center reveal">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">In their words</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold">No one noticed. Everyone wondered.</h2>
+    </div>
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <figure class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i></div>
+        <blockquote class="text-cream/90 leading-relaxed">"My wife asked if I'd been sleeping better. That's when I knew it was working — it just looks like <em>me</em>, not a dye job."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-terracotta grid place-items-center font-semibold text-white">DM</span>
+          <span><span class="block font-semibold text-cream">David M.</span><span class="text-xs text-cream/60">Men · verified</span></span>
+        </figcaption>
+      </figure>
+      <figure class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i></div>
+        <blockquote class="text-cream/90 leading-relaxed">"I was spending $140 every three weeks at the salon. This is gentler on my hair and nobody can tell. I'm not going back."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-sage grid place-items-center font-semibold text-white">PR</span>
+          <span><span class="block font-semibold text-cream">Patricia R.</span><span class="text-xs text-cream/60">Women · verified</span></span>
+        </figcaption>
+      </figure>
+      <figure class="reveal bg-cream/5 border border-cream/10 rounded-2xl p-7 backdrop-blur">
+        <div class="flex text-gold mb-4"><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i><i data-lucide="star" class="w-4 h-4 fill-gold"></i></div>
+        <blockquote class="text-cream/90 leading-relaxed">"The gray hit my beard first and made me look ten years older. Two weeks in and it's back to my natural brown. Wish I'd found it sooner."</blockquote>
+        <figcaption class="mt-5 flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-gold grid place-items-center font-semibold text-white">JT</span>
+          <span><span class="block font-semibold text-cream">James T.</span><span class="text-xs text-cream/60">Beard · verified</span></span>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="text-center text-xs text-cream/40 mt-8">Representative testimonials shown for layout. Real verified reviews to be collected post-launch.</p>
+  </div>
+</section>
+
+<!-- ░░ HERITAGE ░░ -->
+<section class="max-w-5xl mx-auto px-4 sm:px-6 py-20 lg:py-24 text-center reveal">
+  <div class="inline-flex items-center gap-2 text-gold mb-5"><i data-lucide="badge-check" class="w-6 h-6"></i><span class="font-serif text-xl font-semibold text-pine">Since 1991</span></div>
+  <h2 class="font-serif text-3xl sm:text-4xl font-bold text-pine leading-tight max-w-3xl mx-auto">Quietly helping people keep their color for over 30 years.</h2>
+  <p class="mt-6 text-lg text-ink-muted leading-relaxed max-w-2xl mx-auto">
+    Long before "clean beauty" was a hashtag, BOOS LABS was perfecting a gentler way to deal with gray. Reparex isn't a trend — it's a formula that's earned its trust one head of hair at a time.
+  </p>
+</section>
+
+<!-- ░░ FAQ ░░ -->
+<section id="faq" class="bg-cream-card/70 border-y border-line">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
+    <div class="text-center reveal mb-12">
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-terracotta">Good questions</span>
+      <h2 class="mt-4 font-serif text-3xl sm:text-4xl font-bold text-pine">The honest answers</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">Is Reparex a dye? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">No. Dye coats your hair in pigment that grows out as obvious roots. Reparex isn't a dye — it helps your hair restore its own natural color from within, so the change is gradual and there are no roots to give it away.</p>
+      </details>
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">How fast will I see results? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">Most people notice a difference in about 5 days, with natural color typically restored within 1–2 weeks of regular use. Individual results may vary.</p>
+      </details>
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">Will it look fake or orange? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">Because it restores <em>your</em> natural shade rather than depositing a one-size colour, the result blends in — no flat block of color, no brassy tone. That's exactly why no one can tell.</p>
+      </details>
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">Is it safe? Any harsh chemicals? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">Reparex is free from the harsh chemicals found in many dyes. As with any cosmetic product, follow the instructions and patch-test if you have sensitive skin. If you're pregnant or nursing, check with your doctor first.</p>
+      </details>
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">Will it stain my skin or pillowcase? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">Used as directed, Reparex is designed to work cleanly — no gloves required, and no messy stains on skin, sinks, or pillowcases the way many dyes and rivals leave behind.</p>
+      </details>
+      <details class="group bg-cream-card border border-line rounded-2xl px-6 py-1 shadow-soft">
+        <summary class="flex items-center justify-between gap-4 py-4 cursor-pointer list-none font-semibold text-pine">What if it doesn't work for me? <i data-lucide="plus" class="faq-plus w-5 h-5 text-terracotta shrink-0"></i></summary>
+        <p class="pb-5 text-ink-muted leading-relaxed">You're covered by our 60-day money-back guarantee. Try it, and if you're not happy, we'll make it right. After 30+ years, we're confident you'll love the results.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FINAL CTA ░░ -->
+<section class="relative grain overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#EFE7D5] via-cream to-[#EAE0CC]"></div>
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-20 lg:py-28 text-center reveal">
+    <div class="inline-flex items-center gap-2 bg-pine/5 text-pine px-4 py-2 rounded-full text-sm font-semibold mb-6"><i data-lucide="shield-check" class="w-4 h-4"></i> 60-day money-back guarantee</div>
+    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-pine leading-[1.08]">Ready to see yourself<br>in the mirror again?</h2>
+    <p class="mt-6 text-lg text-ink-muted max-w-xl mx-auto">Join the thousands who got their natural color back — quietly, gradually, and on their own terms.</p>
+    <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#shop" class="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-bright text-white text-base font-semibold px-8 py-4 rounded-2xl shadow-soft-lg transition-colors cursor-pointer">Shop Reparex <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    </div>
+    <!-- email capture -->
+    <form class="mt-10 max-w-md mx-auto" onsubmit="return false">
+      <label for="email" class="block text-sm font-medium text-ink-muted mb-2">Not ready? Get 10% off your first order.</label>
+      <div class="flex gap-2">
+        <input id="email" type="email" placeholder="you@email.com" class="flex-1 bg-cream-card border border-line rounded-xl px-4 py-3 text-ink placeholder:text-ink-muted/50 focus:border-pine outline-none" />
+        <button class="bg-pine hover:bg-pine-deep text-cream font-semibold px-5 py-3 rounded-xl transition-colors cursor-pointer whitespace-nowrap">Send my code</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ░░ FOOTER ░░ -->
+<footer class="bg-pine-deep text-cream/80">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-baseline gap-2 mb-3">
+          <span class="font-serif text-2xl font-bold text-cream">Reparex</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-sage font-semibold">For Grey Hair</span>
+        </div>
+        <p class="text-sm leading-relaxed text-cream/60">Your natural color, restored from within. By BOOS LABS — trusted since 1991.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-cream mb-3 text-sm uppercase tracking-wider">Shop</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#shop" class="hover:text-cream transition-colors">For Women</a></li>
+          <li><a href="#shop" class="hover:text-cream transition-colors">For Men</a></li>
+          <li><a href="#shop" class="hover:text-cream transition-colors">For Beard</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Skin Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-cream mb-3 text-sm uppercase tracking-wider">Learn</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#how" class="hover:text-cream transition-colors">How it works</a></li>
+          <li><a href="#proof" class="hover:text-cream transition-colors">Results</a></li>
+          <li><a href="#faq" class="hover:text-cream transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Our story</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-cream mb-3 text-sm uppercase tracking-wider">Support</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-cream transition-colors">Contact</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Money-back guarantee</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Refund policy</a></li>
+          <li><a href="#" class="hover:text-cream transition-colors">Terms &amp; conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-cream/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/50">
+      <p>© 2026 Reparex · BOOS LABS. All rights reserved. Individual results may vary.</p>
+      <div class="flex items-center gap-3 font-medium text-cream/70">
+        <span>PayPal</span><span>·</span><span>Visa</span><span>·</span><span>Mastercard</span><span>·</span><span>Amex</span><span>·</span><span>Google&nbsp;Pay</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+
+  // Header shadow on scroll
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => {
+    hdr.classList.toggle('shadow-soft', scrollY > 8);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Before/After slider
+  const range = document.getElementById('baRange');
+  const after = document.getElementById('baAfter');
+  const handle = document.getElementById('baHandle');
+  if (range) {
+    const sync = () => {
+      const v = range.value;
+      after.style.width = v + '%';
+      handle.style.left = v + '%';
+    };
+    range.addEventListener('input', sync);
+    sync();
+  }
+</script>
+</body>
+</html>
