@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://botsmithgo.github.io/reparex-redesign/sitemap.xml
